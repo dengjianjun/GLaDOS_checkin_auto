@@ -11,15 +11,13 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest # 保持使用最新的 Ubuntu 26.04
+    runs-on: ubuntu-24.04 # 明确指定系统版本，消除迁移 Notice
     steps:
-      # 1. 将 v3 升级到 v4 或 v5，解决 Node.js 20 废弃警告
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6 # 升级到 Node 24 原生版本，消除 Warning
+
       - name: Set up Python
-        # 2. 升级 setup-python 插件版本
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6 # 升级到 Node 24 原生版本，消除 Warning
         with:
-          # 3. 将 3.9 升级为 Ubuntu 26 支持的现代版本（如 3.12 或 3.13）
           python-version: '3.12'
       - name: Install requirements
         run: |
